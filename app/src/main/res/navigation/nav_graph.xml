@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="group.asteriskint.adm.ui.fragment.HomeFragment"
+              android:label="home_fragment" tools:layout="@layout/home_fragment">
+        <action android:id="@+id/action_homeFragment_to_productListFragment" app:destination="@id/productListFragment"/>
+        <action android:id="@+id/action_homeFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_homeFragment_to_orderFragment" app:destination="@id/orderFragment"/>
+    </fragment>
+    <fragment android:id="@+id/cartFragment" android:name="group.asteriskint.adm.ui.fragment.CartFragment"
+              android:label="cart_fragment" tools:layout="@layout/cart_fragment">
+        <action android:id="@+id/action_cartFragment_to_paymentFragment" app:destination="@id/paymentFragment"/>
+    </fragment>
+    <fragment android:id="@+id/itemShowFragment" android:name="group.asteriskint.adm.ui.fragment.ItemShowFragment"
+              android:label="item_show_fragment" tools:layout="@layout/item_show_fragment">
+        <action android:id="@+id/action_itemShowFragment_to_cartFragment" app:destination="@id/cartFragment"/>
+    </fragment>
+    <fragment android:id="@+id/loginFragment" android:name="group.asteriskint.adm.ui.fragment.LoginFragment"
+              android:label="login_fragment" tools:layout="@layout/login_fragment">
+        <action android:id="@+id/action_loginFragment_to_registerFragment" app:destination="@id/registerFragment"/>
+    </fragment>
+    <fragment android:id="@+id/paymentFragment" android:name="group.asteriskint.adm.ui.fragment.PaymentFragment"
+              android:label="payment_fragment" tools:layout="@layout/payment_fragment">
+        <action android:id="@+id/action_paymentFragment_to_afterPaymentFragment"
+                app:destination="@id/afterPaymentFragment"/>
+    </fragment>
+    <fragment android:id="@+id/productListFragment" android:name="group.asteriskint.adm.ui.fragment.ProductListFragment"
+              android:label="product_list_fragment" tools:layout="@layout/product_list_fragment">
+        <action android:id="@+id/action_productListFragment_to_itemShowFragment"
+                app:destination="@id/itemShowFragment"/>
+    </fragment>
+    <fragment android:id="@+id/registerFragment" android:name="group.asteriskint.adm.ui.fragment.RegisterFragment"
+              android:label="register_fragment" tools:layout="@layout/register_fragment"/>
+    <fragment android:id="@+id/accountFragment" android:name="group.asteriskint.adm.ui.fragment.AccountFragment"
+              android:label="account_fragment" tools:layout="@layout/account_fragment"/>
+    <fragment android:id="@+id/afterPaymentFragment"
+              android:name="group.asteriskint.adm.ui.fragment.AfterPaymentFragment"
+              android:label="fragment_after_payment" tools:layout="@layout/fragment_after_payment">
+        <action android:id="@+id/action_afterPaymentFragment_to_orderFragment" app:destination="@id/orderFragment"/>
+    </fragment>
+    <fragment android:id="@+id/orderFragment" android:name="group.asteriskint.adm.ui.fragment.OrderFragment"
+              android:label="order_fragment" tools:layout="@layout/order_fragment"/>
+</navigation>
