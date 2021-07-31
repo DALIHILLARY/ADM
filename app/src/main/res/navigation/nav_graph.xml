@@ -7,7 +7,6 @@
     <fragment android:id="@+id/homeFragment" android:name="group.asteriskint.adm.ui.fragment.HomeFragment"
               android:label="home_fragment" tools:layout="@layout/home_fragment">
         <action android:id="@+id/action_homeFragment_to_productListFragment" app:destination="@id/productListFragment"/>
-        <action android:id="@+id/action_homeFragment_to_accountFragment" app:destination="@id/accountFragment"/>
         <action android:id="@+id/action_homeFragment_to_orderFragment" app:destination="@id/orderFragment"/>
     </fragment>
     <fragment android:id="@+id/cartFragment" android:name="group.asteriskint.adm.ui.fragment.CartFragment"
@@ -34,7 +33,7 @@
     </fragment>
     <fragment android:id="@+id/registerFragment" android:name="group.asteriskint.adm.ui.fragment.RegisterFragment"
               android:label="register_fragment" tools:layout="@layout/register_fragment"/>
-    <fragment android:id="@+id/accountFragment" android:name="group.asteriskint.adm.ui.fragment.AccountFragment"
+    <fragment android:id="@+id/drawer_account" android:name="group.asteriskint.adm.ui.fragment.AccountFragment"
               android:label="account_fragment" tools:layout="@layout/account_fragment"/>
     <fragment android:id="@+id/afterPaymentFragment"
               android:name="group.asteriskint.adm.ui.fragment.AfterPaymentFragment"
