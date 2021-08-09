@@ -16,6 +16,7 @@
     <fragment android:id="@+id/itemShowFragment" android:name="group.asteriskint.adm.ui.fragment.ItemShowFragment"
               android:label="item_show_fragment" tools:layout="@layout/item_show_fragment">
         <action android:id="@+id/action_itemShowFragment_to_cartFragment" app:destination="@id/cartFragment"/>
+        <argument android:name="product_id" app:argType="integer" android:defaultValue="0"/>
     </fragment>
     <fragment android:id="@+id/loginFragment" android:name="group.asteriskint.adm.ui.fragment.LoginFragment"
               android:label="login_fragment" tools:layout="@layout/login_fragment">
@@ -30,6 +31,10 @@
               android:label="product_list_fragment" tools:layout="@layout/product_list_fragment">
         <action android:id="@+id/action_productListFragment_to_itemShowFragment"
                 app:destination="@id/itemShowFragment"/>
+        <argument
+            android:name="category_id"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
     <fragment android:id="@+id/registerFragment" android:name="group.asteriskint.adm.ui.fragment.RegisterFragment"
               android:label="register_fragment" tools:layout="@layout/register_fragment"/>

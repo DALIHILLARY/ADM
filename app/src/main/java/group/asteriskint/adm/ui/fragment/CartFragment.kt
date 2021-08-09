@@ -1,11 +1,11 @@
 package group.asteriskint.adm.ui.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import group.asteriskint.adm.R
 
 class CartFragment : Fragment() {
@@ -20,13 +20,10 @@ class CartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.cart_fragment, container, false)
-    }
+        val viewModel : CartViewModel by viewModels()
+        val view = inflater.inflate(R.layout.cart_fragment, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CartViewModel::class.java)
-        // TODO: Use the ViewModel
+        return view
     }
 
 }
