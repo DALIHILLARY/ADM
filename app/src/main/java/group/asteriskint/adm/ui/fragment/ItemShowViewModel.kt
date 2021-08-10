@@ -30,7 +30,11 @@ class ItemShowViewModel : ViewModel() {
     }
 
     fun fetchProduct(productId : Int?) : Product {
-//        TODO("DO NETWORK CALL")
+//        TODO("DO NETWORK CALL FOR PRODUCT BY ID")
         return productList.first { it.id == productId }
+    }
+    fun addToCart(product : Product) {
+//        TODO("FETCH USER CART BY ID AND PERSIST & SYNC DATA IN DATABASE")
+
     }
 }
