@@ -1,8 +1,12 @@
 package group.asteriskint.adm.ui.fragment
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import group.asteriskint.adm.model.CartItem
 import group.asteriskint.adm.model.Product
+import group.asteriskint.adm.repository.Repository
+import kotlinx.coroutines.runBlocking
 
 class ItemShowViewModel : ViewModel() {
     private val productList = listOf(
@@ -33,8 +37,14 @@ class ItemShowViewModel : ViewModel() {
 //        TODO("DO NETWORK CALL FOR PRODUCT BY ID")
         return productList.first { it.id == productId }
     }
-    fun addToCart(product : Product) {
+    fun addToCart(product : Product, context: Context) : Boolean{
 //        TODO("FETCH USER CART BY ID AND PERSIST & SYNC DATA IN DATABASE")
+        var result = false
+        quantity.value?.let {
+            result = true
+            runBlocking{Repository(context).insertCartItem(CartItem(product.id,product.name,it,it*product.price))}
+        }
+        return result
 
     }
 }

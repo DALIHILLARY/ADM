@@ -58,7 +58,7 @@ class ItemShowFragment : Fragment() {
             viewModel.subtract()
         }
         addToCart.setOnClickListener {
-            viewModel.addToCart(product)
+            viewModel.addToCart(product,this.requireContext())
             val action = ItemShowFragmentDirections.actionItemShowFragmentToCartFragment()
             view.findNavController().navigate(action)
         }
