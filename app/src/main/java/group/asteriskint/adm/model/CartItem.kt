@@ -1,10 +1,11 @@
 package group.asteriskint.adm.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class CartItem (
-    val id : Int,
+    @PrimaryKey val id : Int,
     val name : String,
     val quantity : Int,
     val amount : Double

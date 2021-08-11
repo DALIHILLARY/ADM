@@ -38,7 +38,7 @@ class CartFragment : Fragment() {
             adapter = cartAdapter
         }
         val userId = userViewModel.user.value?.id
-        val cartItems = viewModel.fetchCart(userId)
+        val cartItems = viewModel.fetchCart(userId,this.requireContext())
         cartAdapter.submitList(cartItems)
         purchaseButton.setOnClickListener {
             val action = CartFragmentDirections.actionCartFragmentToPaymentFragment()
