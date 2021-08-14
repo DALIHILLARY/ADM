@@ -23,7 +23,7 @@ class ProductCategoryAdapter(private val mContext: Context) : ListAdapter<Catego
         private val name : TextView = categoryView.findViewById(R.id.product_category_name)
 
         fun bind(category: Category) {
-            Glide.with(mContext.applicationContext).load(R.drawable.mask2).diskCacheStrategy(
+            Glide.with(mContext.applicationContext).load(category.image).diskCacheStrategy(
                 DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
             name.text = category.name
 
@@ -49,7 +49,7 @@ class ProductCategoryAdapter(private val mContext: Context) : ListAdapter<Catego
             }
 
             override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
-                return oldItem.imageUrl == newItem.imageUrl
+                return oldItem.image == newItem.image
             }
         }
 
