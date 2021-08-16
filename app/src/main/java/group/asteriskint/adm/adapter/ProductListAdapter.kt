@@ -24,7 +24,7 @@ class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,Pr
         private val price: TextView = productView.findViewById(R.id.product_price)
 
         fun bind(product: Product) {
-            Glide.with(mContext.applicationContext).load(R.drawable.mask2).diskCacheStrategy(
+            Glide.with(mContext.applicationContext).load(product.image).diskCacheStrategy(
                 DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
             name.text = product.name
             price.text = product.price.toString()
@@ -50,7 +50,7 @@ class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,Pr
             }
 
             override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-                return oldItem.imageUrl == newItem.imageUrl && oldItem.price == newItem.price
+                return oldItem.image == newItem.image && oldItem.price == newItem.price
             }
         }
 

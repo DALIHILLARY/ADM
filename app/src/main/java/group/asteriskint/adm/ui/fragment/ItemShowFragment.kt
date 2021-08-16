@@ -28,6 +28,7 @@ class ItemShowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        activity?.requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val args :  ItemShowFragmentArgs by navArgs()
         val viewModel : ItemShowViewModel by viewModels()
         val view =  inflater.inflate(R.layout.item_show_fragment, container, false)
@@ -39,7 +40,7 @@ class ItemShowFragment : Fragment() {
         val cartAdd :ImageView = view.findViewById(R.id.cart_add)
         val cartSubtract : ImageView = view.findViewById(R.id.cart_subtract)
         val addToCart : View = view.findViewById(R.id.add_to_cart)
-        Glide.with(this.requireActivity().applicationContext).load(R.drawable.mask2).diskCacheStrategy(
+        Glide.with(this.requireActivity().applicationContext).load(product.image).diskCacheStrategy(
                 DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
 
         viewModel.quantity.observe(this, Observer {

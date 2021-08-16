@@ -36,9 +36,27 @@ class LoginFragment : Fragment() {
         val navController = findNavController()
         savedStateHandle = findNavController().previousBackStackEntry!!.savedStateHandle
         savedStateHandle.set(LOGIN_SUCCESSFUL, false)
+        login.setOnClickListener {
+            val username = login_email.text.toString()
+            val password = login_password.text.toString()
+            login(username,password)
+        }
         create_account.setOnClickListener {
             navController.navigate(R.id.registerFragment)
         }
+    }
+    private fun login(username: String, password:String) {
+        userViewModel.login(username, password).observe(viewLifecycleOwner, { result ->
+            if(result) {
+                savedStateHandle.set(LOGIN_SUCCESSFUL, true)
+                findNavController().popBackStack()
+            }else {
+                showErrorMessage()
+            }
+        })
+    }
+    private fun showErrorMessage() {
+        //DISPLAY A error message
     }
 
 }
