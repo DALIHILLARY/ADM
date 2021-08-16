@@ -30,6 +30,7 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val navController = findNavController()
         userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
             if(user != null) {

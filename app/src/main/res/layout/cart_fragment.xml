@@ -9,35 +9,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="match_parent">
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="horizontal"
-                      android:layout_margin="10dp"
-                      android:id="@+id/cart_title" app:layout_constraintEnd_toEndOf="parent"
-                      app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="left"
-                      android:textSize="30sp"
-                      android:fontFamily="monospace"
-                      android:textStyle="bold"
-                      android:text="Name"/>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center"
-                      android:textSize="30sp"
-                      android:fontFamily="monospace"
-                      android:textStyle="bold"
-                      android:text="Quantity"/>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="right"
-                      android:textSize="30sp"
-                      android:fontFamily="monospace"
-                      android:textStyle="bold"
-                      android:text="Price"/>
-
-        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cart_list_recycleView"
@@ -47,30 +18,31 @@
                 android:focusableInTouchMode="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/cart_title"
+                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/cart_total"/>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="horizontal"
-                      android:layout_margin="10dp"
-                      android:id="@+id/cart_total"
-                      app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintBottom_toTopOf="@+id/purchase_button">
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="left"
-                      android:textSize="30sp"
-                      android:fontFamily="monospace"
-                      android:textStyle="bold"
-                      android:text="Total"/>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="right"
-                      android:textSize="30sp"
-                      android:fontFamily="monospace"
-                      android:textStyle="bold"
-                      android:text="Amount"/>
 
-        </LinearLayout>
+        <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:layout_marginBottom="5dp"
+                     android:stretchColumns="1"
+                     android:id="@+id/cart_total" app:layout_constraintBottom_toTopOf="@+id/purchase_button"
+                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+            <TableRow>
+                <TextView
+                        android:layout_marginStart="5dp"
+                          android:textSize="20sp"
+                          android:fontFamily="monospace"
+                          android:textStyle="bold"
+                          android:text="Total"/>
+                <TextView
+                        android:id="@+id/cart_total_amount"
+                        android:layout_marginEnd="5dp"
+                          android:gravity="end"
+                          android:textSize="20sp"
+                          android:fontFamily="monospace"
+                          android:textStyle="bold"
+                          android:text="Amount"/>
+            </TableRow>
+        </TableLayout>
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/purchase_button"
                 android:layout_width="match_parent" android:layout_height="wrap_content"

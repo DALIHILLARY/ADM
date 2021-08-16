@@ -10,21 +10,21 @@
 
             <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="300dp" tools:src="@tools:sample/backgrounds/scenic"
+                    android:layout_height="200dp" tools:src="@tools:sample/backgrounds/scenic"
                     android:id="@+id/itemImage"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"/>
 
-            <ImageView
-                    android:src="@drawable/ic_arrow_back"
-                    android:tint="@color/colorWhite"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/item_show_back"
-                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="24dp" android:layout_marginStart="24dp"/>
+<!--            <ImageView-->
+<!--                    android:src="@drawable/ic_arrow_back"-->
+<!--                    android:tint="@color/colorWhite"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:id="@+id/item_show_back"-->
+<!--                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginTop="24dp" android:layout_marginStart="24dp"/>-->
 
 
         <TextView android:layout_width="match_parent"
