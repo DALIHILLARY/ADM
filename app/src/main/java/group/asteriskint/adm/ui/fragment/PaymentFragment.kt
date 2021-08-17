@@ -57,10 +57,10 @@ class PaymentFragment : Fragment() {
         }
         viewModel.paymentStatus.observe(viewLifecycleOwner, { result ->
             if(result.isSuccess) {
-//                TODO("Navigate to success payment")
+                navController.navigate(R.id.afterPaymentFragment)
             }
             if(result.isFailure) {
-//                TODO("Navigate to payment failure")
+                navController.navigate(R.id.paymentFailFragment)
             }
         })
     }
