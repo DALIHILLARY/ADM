@@ -7,14 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import group.asteriskint.adm.R
+import kotlinx.android.synthetic.main.payment_fail_fragment.*
 
 class PaymentFailFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = PaymentFailFragment()
-    }
 
     private val viewModel: PaymentFailViewModel by viewModels()
 
@@ -28,14 +24,10 @@ class PaymentFailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
-        val args : PaymentFailFragmentArgs by navArgs()
-        val cardNumber = args.cardNumber
-        val cvv = args.cvv
-        val year = args.year
-        val month = args.month
 
-
-
+        retry_payment.setOnClickListener {
+            navController.popBackStack()
+        }
     }
 
 }
