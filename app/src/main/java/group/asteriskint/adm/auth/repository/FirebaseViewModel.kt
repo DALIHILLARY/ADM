@@ -24,6 +24,7 @@ import java.util.*
 private val TAG = "FirebaseViewModel"
 
 class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
+    private var callbackManager: CallbackManager? = null
 
     private lateinit var googleSingInClient: GoogleSignInClient
     private val RC_SIGN_IN = 1
@@ -40,7 +41,7 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
     val currentUserLD: LiveData<User>
         get() = _currentUserMLD
 
-    //Email
+    // Email
     fun registerUserFromAuthWithEmailAndPassword(
         name: String,
         email: String,
