@@ -1,0 +1,41 @@
+package com.example.firebaseauthmvp.repository
+
+import android.app.Activity
+import android.app.Application
+import android.content.Context
+import android.content.Intent
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.example.firebaseauthmvp.model.User
+import com.example.firebaseauthmvp.utils.Result
+import kotlinx.coroutines.CoroutineScope
+
+interface UserRepository {
+    suspend fun logInUserFromAuthWithEmailAndPassword(
+        email: String,
+        password: String
+    ): Result<FirebaseUser?>
+
+    suspend fun getUserFromFirestore(userId: String): Result<User>?
+
+    suspend fun registerUserFromAuthWithEmailAndPassword(
+        email: String,
+        password: String,
+        context: Context
+    ): Result<FirebaseUser?>
+
+    suspend fun createUserInFirestore(user: User): Result<Void?>
+
+    suspend fun sendPasswordResetEmail(
+        email: String
+    ): Result<Void?>
+
+    suspend fun checkUserLoggedIn(): FirebaseUser?
+    suspend fun logOutUser()
+
+    suspend fun signInWithCredential(
+        authCredential: AuthCredential
+    ): Result<AuthResult?>
+}
