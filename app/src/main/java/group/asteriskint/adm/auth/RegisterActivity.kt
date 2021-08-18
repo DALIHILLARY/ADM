@@ -12,7 +12,6 @@ import group.asteriskint.adm.R
 import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.android.ext.android.inject
 
-
 private val TAG = "RegisterActivity"
 
 class RegisterActivity : AppCompatActivity() {
