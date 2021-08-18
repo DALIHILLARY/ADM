@@ -1,4 +1,4 @@
-package group.asteriskint.adm.repository
+package group.asteriskint.adm.auth.repository
 
 class FirebaseConst {
     companion object {

@@ -30,6 +30,8 @@
     <string name="login_successful">Login Successful!</string>
     <string name="request_canceled">Request canceled</string>
     <string name="log_out">Log out</string>
+
+<!--    uncomment line below for user of id referencing to find the string below.-->
 <!--    <string name="default_web_client_id">40500932640-5gftrq13io5thtojdijbmhhp7og9s5q2.apps.googleusercontent.com</string>-->
 
 </resources>

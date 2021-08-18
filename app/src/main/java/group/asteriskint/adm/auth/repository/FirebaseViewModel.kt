@@ -95,7 +95,7 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
                 }
                 Log.d(TAG, "Result.Error - ${user.name}")
                 _currentUserMLD.value = user
-                startMainActivitiy(activity)
+                startMainActivity(activity)
             }
             is Result.Error -> {
                 _toast.value = result.exception.message
@@ -148,6 +148,10 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
             }
         }
     }
+
+    // Twitter Sign in starts here..
+
+
 
     //Google sign in starts here...
     fun signInWithGoogle(activity: Activity) {
@@ -215,7 +219,7 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
                 val _user = result.data
                 Log.d(TAG, "${result.data}")
                 _currentUserMLD.value = _user
-                startMainActivitiy(activity = activity)
+                startMainActivity(activity = activity)
             }
             is Result.Error -> {
                 _toast.value = result.exception.message
@@ -271,7 +275,7 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
         }
     }
 
-    private fun startMainActivitiy(activity: Activity) {
+    private fun startMainActivity(activity: Activity) {
         val intent = Intent(activity, MainActivity::class.java)
         activity.startActivity(intent)
     }
