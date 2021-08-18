@@ -36,8 +36,8 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-//        iv_login_facebook.setOnClickListener {
-//            firebaseViewModel.signInWithFacebook(this)
+//        iv_login_twitter.setOnClickListener {
+//            firebaseViewModel.signInWithTwitter(this)
 //        }
 
         iv_login_google.setOnClickListener {
@@ -64,7 +64,6 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
-
 
     private fun startForgotPasswordDialog() {
         val dialogView = LayoutInflater.from(this).inflate(
@@ -119,7 +118,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         firebaseViewModel.onActivityResult(requestCode, resultCode, data, this)
     }
 }

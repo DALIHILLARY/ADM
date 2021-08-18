@@ -3,7 +3,7 @@
     <string name="app_name">Asterisk Digital Market</string>
 
     <string name="site_title">ADM Uganda</string>
-    <string name="tutorial_title">
+    <string name="site_banner_description">
         Your No.1 Digital Marketplace
     </string>
 
@@ -30,9 +30,6 @@
     <string name="login_successful">Login Successful!</string>
     <string name="request_canceled">Request canceled</string>
     <string name="log_out">Log out</string>
-
-    <string name="facebook_app_id">1056738864696228</string>
-    <string name="fb_login_protocol_scheme">fb1056738864696228</string>
-        <string name="default_web_client_id">40500932640-5gftrq13io5thtojdijbmhhp7og9s5q2.apps.googleusercontent.com</string>
+<!--    <string name="default_web_client_id">40500932640-5gftrq13io5thtojdijbmhhp7og9s5q2.apps.googleusercontent.com</string>-->
 
 </resources>
