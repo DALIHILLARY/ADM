@@ -281,7 +281,6 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
         activity.startActivity(intent)
     }
 
-
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?, activity: Activity) {
 //        callbackManager?.onActivityResult(requestCode, resultCode, data)
 
