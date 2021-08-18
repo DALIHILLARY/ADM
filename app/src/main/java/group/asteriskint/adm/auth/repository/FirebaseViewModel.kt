@@ -1,10 +1,12 @@
 package group.asteriskint.adm.auth.repository
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
+//import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -12,11 +14,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
-import group.asteriskint.adm.auth.LoginActivity
-import group.asteriskint.adm.auth.RegisterActivity
 import group.asteriskint.adm.auth.model.User
 import kotlinx.coroutines.*
 import group.asteriskint.adm.auth.utils.Result
+import group.asteriskint.adm.R
+import group.asteriskint.adm.auth.LoginActivity
+import group.asteriskint.adm.auth.RegisterActivity
+import group.asteriskint.adm.auth.extension.await
+import group.asteriskint.adm.auth.repository.implementation.UserRepositoryImpl
 import group.asteriskint.adm.ui.MainActivity
 import java.lang.Exception
 import java.util.*
@@ -24,7 +29,7 @@ import java.util.*
 private val TAG = "FirebaseViewModel"
 
 class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
-    private var callbackManager: CallbackManager? = null
+//    private var callbackManager: CallbackManager? = null
 
     private lateinit var googleSingInClient: GoogleSignInClient
     private val RC_SIGN_IN = 1
@@ -272,7 +277,7 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
 
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?, activity: Activity) {
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
+//        callbackManager?.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
