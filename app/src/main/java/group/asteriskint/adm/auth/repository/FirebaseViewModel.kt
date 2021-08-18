@@ -23,6 +23,7 @@ import group.asteriskint.adm.auth.RegisterActivity
 import group.asteriskint.adm.auth.extension.await
 import group.asteriskint.adm.auth.repository.implementation.UserRepositoryImpl
 import group.asteriskint.adm.ui.MainActivity
+import group.asteriskint.adm.ui.activity.HomeActivity
 import java.lang.Exception
 import java.util.*
 
@@ -152,7 +153,6 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
     // Twitter Sign in starts here..
 
 
-
     //Google sign in starts here...
     fun signInWithGoogle(activity: Activity) {
         launchDataLoad {
@@ -276,7 +276,8 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
     }
 
     private fun startMainActivity(activity: Activity) {
-        val intent = Intent(activity, MainActivity::class.java)
+//        val intent = Intent(activity, MainActivity::class.java)
+        val intent = Intent(activity, HomeActivity::class.java)
         activity.startActivity(intent)
     }
 
