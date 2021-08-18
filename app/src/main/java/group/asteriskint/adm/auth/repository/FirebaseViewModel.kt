@@ -154,8 +154,9 @@ class FirebaseViewModel(var userRepository: UserRepository) : ViewModel() {
         launchDataLoad {
             val googleSignInOptions: GoogleSignInOptions =
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                    .requestIdToken(activity.getString(R.string.default_web_client_id))
-                    .requestIdToken("981711550859-g8oh6l9q8h9ho6fa04g39qke4ajo1n7s.apps.googleusercontent.com")
+                    .requestIdToken(activity.getString(R.string.default_web_client_id))  // # flexible choice
+//                        uncomment line below if above isn't working. Due to bloody resource not found errors
+//                    .requestIdToken("981711550859-g8oh6l9q8h9ho6fa04g39qke4ajo1n7s.apps.googleusercontent.com")
                     .requestEmail()
                     .build()
 
