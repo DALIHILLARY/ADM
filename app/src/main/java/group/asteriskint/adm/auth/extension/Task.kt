@@ -7,7 +7,6 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-
 // Task Extension
 suspend fun <T> Task<T>.await(): Result<T> {
     if (isComplete) {
