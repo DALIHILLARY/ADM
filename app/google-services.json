@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "40500932640",
+    "project_id": "asteriskint-2ab68",
+    "storage_bucket": "asteriskint-2ab68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40500932640:android:cd38919f6a582852b64c45",
+        "android_client_info": {
+          "package_name": "group.asteriskint.adm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40500932640-5gftrq13io5thtojdijbmhhp7og9s5q2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIIe3eoOLLAUkKGYC_ht8e7obtv-z3VB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40500932640-5gftrq13io5thtojdijbmhhp7og9s5q2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
