@@ -1,16 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.ItemShowFragment">
-
-    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".ui.fragment.ItemShowFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
 
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" tools:src="@tools:sample/backgrounds/scenic"
+                    android:id="@+id/itemImage"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"/>
+
+<!--            <ImageView-->
+<!--                    android:src="@drawable/ic_arrow_back"-->
+<!--                    android:tint="@color/colorWhite"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:id="@+id/item_show_back"-->
+<!--                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:layout_marginTop="24dp" android:layout_marginStart="24dp"/>-->
+
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/item_name"
+                  android:textSize="18sp"
+                  android:text="Product Name"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/itemImage"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/item_price"
+                  android:text="28000 Ugx"
+                  android:layout_margin="5dp"
+                  android:fontFamily="monospace"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/item_name"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="5dp"
+                  android:text="Description"
+                  android:id="@+id/item_description"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintHorizontal_bias="0.888" app:layout_constraintTop_toBottomOf="@+id/item_price"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="?actionBarSize"
+                      android:orientation="horizontal" app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                      android:id="@+id/linearLayout">
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                               android:layout_height="match_parent">
+                <ImageView android:layout_width="50dp"
+                           android:layout_height="?actionBarSize"
+                           android:src="@drawable/ic_cart_subtract"
+                           android:id="@+id/cart_subtract" app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintBottom_toBottomOf="parent"
+                           app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="16dp"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="?actionBarSize"
+                          android:gravity="center"
+                          android:textSize="30sp"
+                          android:id="@+id/cart_quantity" app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintStart_toEndOf="@+id/cart_subtract"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          android:layout_marginStart="16dp"/>
+                <ImageView android:layout_width="50dp"
+                           android:layout_height="?actionBarSize"
+                           android:src="@drawable/ic_cart_add"
+                           android:id="@+id/cart_add" app:layout_constraintBottom_toBottomOf="parent"
+                           app:layout_constraintStart_toEndOf="@+id/cart_quantity"
+                           app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="32dp"/>
+                <LinearLayout android:layout_width="150dp" android:layout_height="match_parent"
+                              android:orientation="vertical"
+                              android:layout_marginVertical="5dp"
+                              android:paddingVertical="5dp"
+                              android:id="@+id/add_to_cart"
+                              android:background="@color/colorPrimary"
+                              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                              android:textAlignment="center"
+                              app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="16dp">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_gravity="center_horizontal"
+                              android:textColor="@color/colorWhite"
+                              android:layout_height="wrap_content" android:id="@+id/cart_amount"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:textColor="@color/colorWhite"
+                              android:layout_gravity="center_horizontal"
+                              android:layout_height="wrap_content" android:text="@string/add_to_cart"/>
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

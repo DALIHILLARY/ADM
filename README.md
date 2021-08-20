@@ -1,6 +1,6 @@
 # ADM
 
-This is a project we are working on for our internship. 
+This is a internship project.
 
 It’s about an android application that will be used as a digital marketplace for ADM Uganda customers.
 
