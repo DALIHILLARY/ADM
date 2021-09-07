@@ -10,7 +10,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.fragment.findNavController
 import group.asteriskint.adm.R
 import group.asteriskint.adm.viewmodel.UserViewModel
-import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : Fragment() {
 
@@ -36,14 +35,14 @@ class LoginFragment : Fragment() {
         val navController = findNavController()
         savedStateHandle = findNavController().previousBackStackEntry!!.savedStateHandle
         savedStateHandle.set(LOGIN_SUCCESSFUL, false)
-        login.setOnClickListener {
-            val username = login_email.text.toString()
-            val password = login_password.text.toString()
-            login(username,password)
-        }
-        create_account.setOnClickListener {
-            navController.navigate(R.id.registerFragment)
-        }
+//        login.setOnClickListener {
+//            val username = login_email.text.toString()
+//            val password = login_password.text.toString()
+//            login(username,password)
+//        }
+//        create_account.setOnClickListener {
+//            navController.navigate(R.id.registerFragment)
+//        }
     }
     private fun login(username: String, password:String) {
         userViewModel.login(username, password).observe(viewLifecycleOwner, { result ->

@@ -15,7 +15,7 @@ class SplashActivityViewModel : ViewModel() {
             withContext(Dispatchers.IO) {
                 while(isActive) {
                     try {
-                        val url = URL("https://google.com")
+                        val url = URL("https://ec.adm.ug")
                         val connection  = url.openConnection()
                         connection.connect()
                         if(isConnected.value == false)

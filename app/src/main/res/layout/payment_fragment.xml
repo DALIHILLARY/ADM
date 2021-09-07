@@ -10,75 +10,82 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="match_parent">
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
-                                                               android:layout_height="wrap_content"
-                                                               android:id="@+id/card_number"
-                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                                               android:hint="Card Number"
-                                                               app:layout_constraintTop_toTopOf="parent"
-                                                               app:layout_constraintStart_toStartOf="parent"
-                                                               app:layout_constraintEnd_toEndOf="parent"
-                                                               android:layout_marginTop="24dp"
-                                                               android:layout_marginStart="8dp"
-                                                               android:layout_marginEnd="8dp">
-            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                                     android:layout_height="wrap_content"
-                                                                     android:id="@+id/payment_card_number"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="100dp"
-                                                               android:layout_height="wrap_content"
-                                                               android:id="@+id/card_year"
-                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                                               android:hint="YY"
-                                                               app:layout_constraintStart_toEndOf="@+id/card_month"
-                                                               app:layout_constraintTop_toBottomOf="@+id/card_number"
-                                                               android:layout_marginTop="24dp"
-                                                               android:layout_marginStart="8dp">
-            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                                     android:layout_height="wrap_content"
-                                                                     android:id="@+id/payment_card_year"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="100dp"
-                                                               android:layout_height="wrap_content"
-                                                               android:id="@+id/card_month"
-                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                                               android:hint="MM"
-                                                               app:layout_constraintStart_toStartOf="parent"
-                                                               app:layout_constraintTop_toBottomOf="@+id/card_number"
-                                                               android:layout_marginTop="24dp"
-                                                               android:layout_marginStart="8dp">
-            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                                     android:layout_height="wrap_content"
-                                                                     android:id="@+id/payment_card_month"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="100dp"
-                                                               android:layout_height="wrap_content"
-                                                               android:id="@+id/card_cvv"
-                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                                               android:hint="CVV"
-                                                               app:layout_constraintEnd_toEndOf="parent"
-                                                               app:layout_constraintTop_toBottomOf="@+id/card_number"
-                                                               android:layout_marginTop="24dp"
-                                                               android:layout_marginEnd="8dp">
-            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                                     android:layout_height="wrap_content"
-                                                                     android:id="@+id/payment_card_cvv"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
-                                                               android:layout_height="wrap_content"
-                                                               android:id="@+id/card_address"
-                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                                               android:hint="Address"
-                                                               app:layout_constraintStart_toStartOf="parent"
-                                                               app:layout_constraintTop_toBottomOf="@+id/card_year"
-                                                               android:layout_marginTop="24dp"
-                                                               app:layout_constraintEnd_toEndOf="parent"
-                                                               android:layout_marginStart="8dp"
-                                                               android:layout_marginEnd="8dp">
-            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                                     android:layout_height="wrap_content"
-                                                                     android:id="@+id/payment_card_address"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <com.braintreepayments.cardform.view.CardForm
+                android:id="@+id/card_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+<!--        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"-->
+<!--                                                               android:layout_height="wrap_content"-->
+<!--                                                               android:id="@+id/card_number"-->
+<!--                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                                                               android:hint="Card Number"-->
+<!--                                                               app:layout_constraintTop_toTopOf="parent"-->
+<!--                                                               app:layout_constraintStart_toStartOf="parent"-->
+<!--                                                               app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                                               android:layout_marginTop="24dp"-->
+<!--                                                               android:layout_marginStart="8dp"-->
+<!--                                                               android:layout_marginEnd="8dp">-->
+<!--            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"-->
+<!--                                                                     android:layout_height="wrap_content"-->
+<!--                                                                     android:id="@+id/payment_card_number"/>-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+<!--        <com.google.android.material.textfield.TextInputLayout android:layout_width="100dp"-->
+<!--                                                               android:layout_height="wrap_content"-->
+<!--                                                               android:id="@+id/card_year"-->
+<!--                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                                                               android:hint="YY"-->
+<!--                                                               app:layout_constraintStart_toEndOf="@+id/card_month"-->
+<!--                                                               app:layout_constraintTop_toBottomOf="@+id/card_number"-->
+<!--                                                               android:layout_marginTop="24dp"-->
+<!--                                                               android:layout_marginStart="8dp">-->
+<!--            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"-->
+<!--                                                                     android:layout_height="wrap_content"-->
+<!--                                                                     android:id="@+id/payment_card_year"/>-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+<!--        <com.google.android.material.textfield.TextInputLayout android:layout_width="100dp"-->
+<!--                                                               android:layout_height="wrap_content"-->
+<!--                                                               android:id="@+id/card_month"-->
+<!--                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                                                               android:hint="MM"-->
+<!--                                                               app:layout_constraintStart_toStartOf="parent"-->
+<!--                                                               app:layout_constraintTop_toBottomOf="@+id/card_number"-->
+<!--                                                               android:layout_marginTop="24dp"-->
+<!--                                                               android:layout_marginStart="8dp">-->
+<!--            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"-->
+<!--                                                                     android:layout_height="wrap_content"-->
+<!--                                                                     android:id="@+id/payment_card_month"/>-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+<!--        <com.google.android.material.textfield.TextInputLayout android:layout_width="100dp"-->
+<!--                                                               android:layout_height="wrap_content"-->
+<!--                                                               android:id="@+id/card_cvv"-->
+<!--                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                                                               android:hint="CVV"-->
+<!--                                                               app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                                               app:layout_constraintTop_toBottomOf="@+id/card_number"-->
+<!--                                                               android:layout_marginTop="24dp"-->
+<!--                                                               android:layout_marginEnd="8dp">-->
+<!--            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"-->
+<!--                                                                     android:layout_height="wrap_content"-->
+<!--                                                                     android:id="@+id/payment_card_cvv"/>-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+<!--        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"-->
+<!--                                                               android:layout_height="wrap_content"-->
+<!--                                                               android:id="@+id/card_address"-->
+<!--                                                               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                                                               android:hint="Address"-->
+<!--                                                               app:layout_constraintStart_toStartOf="parent"-->
+<!--                                                               app:layout_constraintTop_toBottomOf="@+id/card_year"-->
+<!--                                                               android:layout_marginTop="24dp"-->
+<!--                                                               app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                                               android:layout_marginStart="8dp"-->
+<!--                                                               android:layout_marginEnd="8dp">-->
+<!--            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"-->
+<!--                                                                     android:layout_height="wrap_content"-->
+<!--                                                                     android:id="@+id/payment_card_address"/>-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.button.MaterialButton android:layout_width="200dp"
                                                            android:layout_height="wrap_content"
@@ -89,8 +96,8 @@
                                                            android:textColor="@color/colorWhite"
                                                            app:layout_constraintEnd_toEndOf="parent"
                                                            app:layout_constraintStart_toStartOf="parent"
-                                                           app:layout_constraintTop_toBottomOf="@+id/card_address"
-                                                           android:layout_marginTop="24dp"/>
+                                                           app:layout_constraintBottom_toBottomOf="parent"
+                                                           android:layout_marginBottom="32dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

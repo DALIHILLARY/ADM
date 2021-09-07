@@ -1,9 +1,12 @@
 package group.asteriskint.adm.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -16,22 +19,22 @@ import group.asteriskint.adm.R
 import group.asteriskint.adm.model.Product
 import group.asteriskint.adm.ui.fragment.ProductListFragmentDirections
 
-class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,ProductListAdapter.ProductViewHolder>(DIFF_CALLBACK) {
-
+class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,ProductListAdapter.ProductViewHolder>(DIFF_CALLBACK), Filterable {
+    private var filteredProductList = listOf<Product>()
     inner class ProductViewHolder(private val productView: View) : RecyclerView.ViewHolder(productView) {
         private val image : ImageView = productView.findViewById(R.id.product_image)
         private val name : TextView = productView.findViewById(R.id.product_name)
         private val price: TextView = productView.findViewById(R.id.product_price)
 
         fun bind(product: Product) {
-            Glide.with(mContext.applicationContext).load(product.image).diskCacheStrategy(
-                DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
+            Glide.with(mContext.applicationContext).load(product.image).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
             name.text = product.name
             price.text = product.price.toString()
             productView.setOnClickListener {
-                val action = ProductListFragmentDirections.actionProductListFragmentToItemShowFragment(product.id)
+                val action = ProductListFragmentDirections.actionProductListFragmentToItemShowFragment(productId = product.id, productName = product.name, productImage = product.image,productPrice = product.price.toFloat(),productCategory = product.category_id)
                 productView.findNavController().navigate(action)
             }
+            Log.d("productAdapter","$product")
         }
     }
 
@@ -54,5 +57,36 @@ class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,Pr
             }
         }
 
+    }
+
+    override fun getFilter(): Filter {
+        TODO("TO BE IMPLEMENTAED")
+//        return object: Filter() {
+//            override fun performFiltering(constraint: CharSequence?): FilterResults {
+//                val charSearch = constraint.toString()
+//                if(charSearch.isEmpty()){
+//                    filteredProductList = currentList
+//                }else{
+//                    val resultSet = mutableSetOf<Product>()
+//                    currentList.forEach {
+//                        val name = it.name
+//                        if(name.contains(charSearch)) {
+//                            resultSet.add(it)
+//                        }
+//                    }
+//                    filteredProductList = resultSet.toList()
+//                }
+//                val filterResults = FilterResults()
+//                filterResults.values = filteredProductList
+//                filterResults.count = filteredProductList.size
+//                return filterResults
+//            }
+//
+//            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+//                filteredProductList = results?.values as List<Product>
+//                submitList(filteredProductList)
+//            }
+//
+//        }
     }
 }

@@ -2,11 +2,11 @@ package group.asteriskint.adm.auth
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import group.asteriskint.adm.R
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseUser
+import group.asteriskint.adm.R
 import group.asteriskint.adm.auth.repository.FirebaseViewModel
 import group.asteriskint.adm.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
@@ -15,9 +15,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-private val TAG = "SplashScreen"
 
 class SplashActivity : AppCompatActivity() {
+    private val TAG = "SplashScreen"
     private val firebaseViewModel: FirebaseViewModel by inject()
     private var currentFirebaseUser: FirebaseUser? = null
     private val coroutineScope = CoroutineScope(Dispatchers.Main)

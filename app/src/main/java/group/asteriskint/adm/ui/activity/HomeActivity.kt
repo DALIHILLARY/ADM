@@ -1,5 +1,8 @@
 package group.asteriskint.adm.ui.activity
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -13,35 +16,116 @@ import group.asteriskint.adm.viewmodel.HomeActivityViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), ViewModelStoreOwner {
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         val viewModel : HomeActivityViewModel by viewModels()
         viewModel.checkConnection()
-        viewModel.isConnected.observe(this,{ connected ->
+        viewModel.isConnected.observe(this) { connected ->
             connection_status.visibility = View.VISIBLE
             if (connected) {
                 connection_status.setBackgroundResource(R.color.colorGreen)
-                connection_status.setTextColor(resources.getColor(R.color.colorWhite,resources.newTheme()))
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    connection_status.setTextColor(resources.getColor(R.color.colorWhite, resources.newTheme()))
+                else
+                    connection_status.setTextColor(resources.getColor(R.color.colorWhite))
                 connection_status.text = "Connected"
                 Handler().postDelayed({
                     connection_status.visibility = View.GONE
-                },3000)
-            }else{
+                }, 3000)
+            } else {
                 connection_status.setBackgroundResource(R.color.colorRed)
-                connection_status.setTextColor(resources.getColor(R.color.colorWhite,resources.newTheme()))
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    connection_status.setTextColor(resources.getColor(R.color.colorWhite, resources.newTheme()))
+                else
+                    connection_status.setTextColor(resources.getColor(R.color.colorWhite))
                 connection_status.text = "Disconnected"
             }
-        })
+        }
         imageMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            text_title.text = destination.label
+        navigationView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+
+                R.id.drawer_cart -> {
+                    navController.navigate(R.id.cartFragment)
+                    false
+                }
+                R.id.drawer_category -> {
+                    navController.navigate(R.id.homeFragment)
+                    false
+                }
+                else -> {
+                    //DO NOTHING
+                    false
+                }
+
+            }
         }
+//        search.setOnClickListener {
+//            search.visibility = View.GONE
+//            search_view.visibility = View.VISIBLE
+//            text_title.visibility = View.GONE
+//        }
+//        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                viewModel.searchQuery.value = newText
+//                return false
+//            }
+//
+//        })
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            text_title.text = destination.label
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            search.visibility = View.GONE
+            search_view.visibility = View.GONE
+            when(destination.label.toString()) {
+                "home_fragment" -> {
+//                    search.visibility = View.VISIBLE
+                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+
+                }
+                "product_list_fragment" -> {
+//                    search.visibility = View.VISIBLE
+                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+                }
+                "item_show_fragment" -> {
+
+                }
+                "cart_fragment" -> {
+
+                }
+                "payment_fragment" -> {
+
+                }
+                "fragment_after_payment" -> {
+
+                }
+                "login_fragment" -> {
+
+                }
+                "register_fragment"-> {
+
+                }
+                "payment_fail_fragment" ->{
+
+                }
+                else -> {
+
+                }
+            }
+        }
+
     }
 }

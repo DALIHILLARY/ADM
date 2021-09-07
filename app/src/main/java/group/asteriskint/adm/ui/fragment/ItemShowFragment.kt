@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,13 +12,10 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import group.asteriskint.adm.R
+import group.asteriskint.adm.model.Product
+import kotlinx.android.synthetic.main.item_show_fragment.*
 
 class ItemShowFragment : Fragment() {
-
-
-    companion object {
-        fun newInstance() = ItemShowFragment()
-    }
 
     private lateinit var viewModel: ItemShowViewModel
 
@@ -28,43 +23,49 @@ class ItemShowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        activity?.requestedOrientation  = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        return inflater.inflate(R.layout.item_show_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val args :  ItemShowFragmentArgs by navArgs()
         val viewModel : ItemShowViewModel by viewModels()
-        val view =  inflater.inflate(R.layout.item_show_fragment, container, false)
+
         val productId = args.productId
-        val product = viewModel.fetchProduct(productId)
-        val image : ImageView = view.findViewById(R.id.itemImage)
-        val cartAmount : TextView = view.findViewById(R.id.cart_amount)
-        val cartQuantity : TextView = view.findViewById(R.id.cart_quantity)
-        val cartAdd :ImageView = view.findViewById(R.id.cart_add)
-        val cartSubtract : ImageView = view.findViewById(R.id.cart_subtract)
-        val addToCart : View = view.findViewById(R.id.add_to_cart)
-        Glide.with(this.requireActivity().applicationContext).load(product.image).diskCacheStrategy(
-                DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
+        val productName = args.productName
+        val productImage = args.productImage
+        val productPrice = args.productPrice.toDouble()
+        val productCategory = args.productCategory
+
+//        val product = viewModel.fetchProduct(productId)
+        val product = Product(productId,productName,productPrice,productImage,productCategory)
+
+        item_name.text = productName
+        item_price.text = productPrice.toString()
+        Glide.with(this.requireActivity().applicationContext).load(productId).diskCacheStrategy(
+            DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(itemImage)
 
         viewModel.quantity.observe(this, Observer {
             if(it == 1) {
-                cartSubtract.visibility = View.GONE
+                cart_subtract.visibility = View.GONE
             }else{
-                cartSubtract.visibility = View.VISIBLE
+                cart_subtract.visibility = View.VISIBLE
             }
-            cartQuantity.text = it.toString()
-            cartAmount.text = (it * product.price).toString()
+            cart_quantity.text = it.toString()
+            cart_amount.text = (it * product.price).toString()
         })
-        cartAdd.setOnClickListener {
+        cart_add.setOnClickListener {
             viewModel.add()
         }
-        cartSubtract.setOnClickListener {
+        cart_subtract.setOnClickListener {
             viewModel.subtract()
         }
-        addToCart.setOnClickListener {
+        add_to_cart.setOnClickListener {
             viewModel.addToCart(product,this.requireContext())
-            val action = ItemShowFragmentDirections.actionItemShowFragmentToCartFragment()
-            view.findNavController().navigate(action)
+            view.findNavController().navigate(R.id.homeFragment)
+//            val action = ItemShowFragmentDirections.actionItemShowFragmentToCartFragment()
+//            view.findNavController().navigate(action)
         }
-
-        return view
     }
 
 }

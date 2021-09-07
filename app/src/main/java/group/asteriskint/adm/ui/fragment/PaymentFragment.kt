@@ -1,6 +1,10 @@
 package group.asteriskint.adm.ui.fragment
 
+import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,17 +56,31 @@ class PaymentFragment : Fragment() {
 //                navController.navigate(R.id.loginFragment)
 //            }
 //        })
+        card_form.cardRequired(true)
+            .expirationRequired(true)
+            .cvvRequired(true)
+            .mobileNumberRequired(true)
+            .mobileNumberExplanation("SMS is required on this number")
+            .setup(this.activity)
+
+        card_form.cvvEditText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
+        val paymentDialog = Dialog(this.requireContext())
+        paymentDialog.setContentView(R.layout.payment_processing_alert)
         card_payment.setOnClickListener {
-            viewModel.makePayment()
+            paymentDialog.show()
+            Handler(Looper.getMainLooper()).postDelayed({
+                viewModel.makePayment()
+            },3000L)
         }
-        viewModel.paymentStatus.observe(viewLifecycleOwner, { result ->
-            if(result.isSuccess) {
+        viewModel.paymentStatus.observe(viewLifecycleOwner) { result ->
+            paymentDialog.dismiss()
+            if (result.isSuccess) {
                 navController.navigate(R.id.afterPaymentFragment)
             }
-            if(result.isFailure) {
+            if (result.isFailure) {
                 navController.navigate(R.id.paymentFailFragment)
             }
-        })
+        }
     }
 
 }
