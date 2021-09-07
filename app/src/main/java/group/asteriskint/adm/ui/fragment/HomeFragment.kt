@@ -11,33 +11,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import group.asteriskint.adm.R
 import group.asteriskint.adm.adapter.ProductCategoryAdapter
+import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.home_fragment, container, false)
+        return inflater.inflate(R.layout.home_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val viewModel: HomeViewModel by viewModels()
-        val categoryAdapter = ProductCategoryAdapter(this.requireContext())
-        val recyclerView: RecyclerView = view.findViewById(R.id.product_category_recycleView)
-        recyclerView.apply{
-            layoutManager = LinearLayoutManager(activity)
-            adapter = categoryAdapter
-        }
+        category_shimmer.startShimmer()
         viewModel.fetchCategories()
-        viewModel.categoryList.observe(this,{
+        viewModel.categoryList.observe(viewLifecycleOwner) {
             it?.let {
+                category_shimmer.stopShimmer()
+                category_shimmer.visibility = View.GONE
+                product_category_recycleView.visibility = View.VISIBLE
+                val categoryAdapter = ProductCategoryAdapter(this.requireContext())
+                val recyclerView: RecyclerView = view.findViewById(R.id.product_category_recycleView)
+                recyclerView.apply{
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = categoryAdapter
+                }
                 categoryAdapter.submitList(it)
             }
-        })
-
-        return view
+        }
     }
 
 

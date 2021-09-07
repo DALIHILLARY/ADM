@@ -29,7 +29,7 @@ class HomeViewModel : ViewModel() {
     fun fetchCategories()  {
         viewModelScope.launch{
             val list = withContext(Dispatchers.IO) {
-                val json = Fuel.get("https://interns1.adm.ug/wc-api/v2/products/categories?&consumer_key=ck_11eabcc20c694cddd02a3fda1b9315d1159869bb&consumer_secret=cs_baae5205f3c7e8900f4d545fb58c001d73683d1a").responseString().second.data
+                val json = Fuel.get("https://ec.adm.ug/wc-api/v3/products/categories?&consumer_key=ck_57e29bf4c2aa93b765f35c608bb2bf03183030e6&consumer_secret=cs_9de94434632cd2865ac417ca49aba366160df9fa").responseString().second.data
                 Log.d("FETCH ", String(json))
                 try {
                     Gson().fromJson(String(json),CategoryList::class.java).product_categories
@@ -37,8 +37,8 @@ class HomeViewModel : ViewModel() {
                     listOf<Category>()
                 }
             }
-//            categoryList.value = list
-            categoryList.value = categoryListTest
+            categoryList.value = list
+//            categoryList.value = categoryListTest
         }
 
     }

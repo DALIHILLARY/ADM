@@ -9,6 +9,7 @@ import java.net.URL
 
 class HomeActivityViewModel : ViewModel() {
     val isConnected = MutableLiveData(false)
+    val searchQuery = MutableLiveData("")
 
     fun checkConnection() {
         viewModelScope.launch {

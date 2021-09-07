@@ -1,9 +1,7 @@
 package group.asteriskint.adm
 
 import android.app.Application
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
-import group.asteriskint.adm.auth.module.firebaseViewModelModule
+import androidx.multidex.MultiDex
 import group.asteriskint.adm.auth.module.firebaseViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -16,5 +14,6 @@ class MyApp : Application() {
             androidContext(this@MyApp)
             modules(listOf(firebaseViewModelModule))
         }
+        MultiDex.install(this)
     }
 }

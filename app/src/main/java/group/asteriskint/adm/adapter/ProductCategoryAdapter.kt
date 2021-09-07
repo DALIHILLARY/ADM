@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -16,19 +18,18 @@ import group.asteriskint.adm.R
 import group.asteriskint.adm.model.Category
 import group.asteriskint.adm.ui.fragment.HomeFragmentDirections
 
-class ProductCategoryAdapter(private val mContext: Context) : ListAdapter<Category, ProductCategoryAdapter.CategoryViewHolder>(DIFF_CALLBACK) {
+class ProductCategoryAdapter(private val mContext: Context) : ListAdapter<Category, ProductCategoryAdapter.CategoryViewHolder>(DIFF_CALLBACK), Filterable {
 
     inner class CategoryViewHolder(private val categoryView : View) : RecyclerView.ViewHolder(categoryView) {
         private val image : ImageView = categoryView.findViewById(R.id.product_category_image)
         private val name : TextView = categoryView.findViewById(R.id.product_category_name)
 
         fun bind(category: Category) {
-            Glide.with(mContext.applicationContext).load(category.image).diskCacheStrategy(
-                DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
+            Glide.with(mContext.applicationContext).load(category.image).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
             name.text = category.name
 
             categoryView.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToProductListFragment(category.id)
+                val action = HomeFragmentDirections.actionHomeFragmentToProductListFragment(category.name)
                 categoryView.findNavController().navigate(action)
             }
         }
@@ -53,5 +54,9 @@ class ProductCategoryAdapter(private val mContext: Context) : ListAdapter<Catego
             }
         }
 
+    }
+
+    override fun getFilter(): Filter {
+        TODO("Not yet implemented")
     }
 }

@@ -15,15 +15,15 @@ class SplashActivity : AppCompatActivity() {
 
         val viewModel : SplashActivityViewModel by viewModels()
         viewModel.checkConnection()
-        viewModel.isConnected.observe(this, { connected ->
-            if(connected) {
+        viewModel.isConnected.observe(this) { connected ->
+            if (connected) {
                 Handler().postDelayed({
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
-                },4000)
+                }, 4000)
 
             }
-        })
+        }
     }
 }
