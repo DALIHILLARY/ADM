@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -19,14 +17,14 @@ import group.asteriskint.adm.R
 import group.asteriskint.adm.model.Product
 import group.asteriskint.adm.ui.fragment.ProductListFragmentDirections
 
-class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,ProductListAdapter.ProductViewHolder>(DIFF_CALLBACK), Filterable {
-    private var filteredProductList = listOf<Product>()
+class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,ProductListAdapter.ProductViewHolder>(DIFF_CALLBACK){
     inner class ProductViewHolder(private val productView: View) : RecyclerView.ViewHolder(productView) {
         private val image : ImageView = productView.findViewById(R.id.product_image)
         private val name : TextView = productView.findViewById(R.id.product_name)
         private val price: TextView = productView.findViewById(R.id.product_price)
 
         fun bind(product: Product) {
+            Log.d("productAdapter","$product")
             Glide.with(mContext.applicationContext).load(product.image).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(image)
             name.text = product.name
             price.text = product.price.toString()
@@ -34,7 +32,7 @@ class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,Pr
                 val action = ProductListFragmentDirections.actionProductListFragmentToItemShowFragment(productId = product.id, productName = product.name, productImage = product.image,productPrice = product.price.toFloat(),productCategory = product.category_id)
                 productView.findNavController().navigate(action)
             }
-            Log.d("productAdapter","$product")
+
         }
     }
 
@@ -53,14 +51,14 @@ class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,Pr
             }
 
             override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-                return oldItem.image == newItem.image && oldItem.price == newItem.price
+                return oldItem.image == newItem.image
             }
         }
 
     }
 
-    override fun getFilter(): Filter {
-        TODO("TO BE IMPLEMENTAED")
+//    override fun getFilter(): Filter {
+//        TODO("TO BE IMPLEMENTAED")
 //        return object: Filter() {
 //            override fun performFiltering(constraint: CharSequence?): FilterResults {
 //                val charSearch = constraint.toString()
@@ -88,5 +86,5 @@ class ProductListAdapter(private val mContext: Context) : ListAdapter<Product,Pr
 //            }
 //
 //        }
-    }
+//    }
 }

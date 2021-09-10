@@ -34,19 +34,14 @@ class ProductListFragment : Fragment() {
         val categoryName = args.categoryName
         product_list_shimmer.startShimmer()
         viewModel.fetchProductList(categoryName)
-//        activityViewModel.searchQuery.observe(viewLifecycleOwner) {
-//            productQuery = it
-//            product_list_shimmer.startShimmer()
-//            viewModel.fetchProductList(categoryName)
-//        }
         viewModel.productList.observe(viewLifecycleOwner) {
             it?.let {
                 product_list_shimmer.stopShimmer()
                 product_list_shimmer.visibility = View.GONE
                 product_list_recycleView.visibility = View.VISIBLE
-//                product_search.visibility = View.VISIBLE
                 val productListAdapter = ProductListAdapter(this.requireContext())
-                val recycleView : RecyclerView= view.findViewById(R.id.product_list_recycleView)
+                val recycleView : RecyclerView = view.findViewById(R.id.product_list_recycleView)
+
                 recycleView.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = productListAdapter
@@ -54,8 +49,9 @@ class ProductListFragment : Fragment() {
 //                if(productQuery.isNotEmpty()) {
 //                    productListAdapter.filter.filter(productQuery)
 //                }else{
+
+                productListAdapter.submitList(it)
                 Log.d("productListFragment","list $it")
-                    productListAdapter.submitList(it)
 //                }
             }
         }
