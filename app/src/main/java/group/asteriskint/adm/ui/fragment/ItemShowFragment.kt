@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.material.snackbar.Snackbar
 import group.asteriskint.adm.R
 import group.asteriskint.adm.model.Product
 import kotlinx.android.synthetic.main.item_show_fragment.*
@@ -42,7 +43,7 @@ class ItemShowFragment : Fragment() {
 
         item_name.text = productName
         item_price.text = productPrice.toString()
-        Glide.with(this.requireActivity().applicationContext).load(productId).diskCacheStrategy(
+        Glide.with(this.requireActivity().applicationContext).load(productImage).diskCacheStrategy(
             DiskCacheStrategy.ALL).skipMemoryCache(true).fitCenter().into(itemImage)
 
         viewModel.quantity.observe(this, Observer {
@@ -62,6 +63,7 @@ class ItemShowFragment : Fragment() {
         }
         add_to_cart.setOnClickListener {
             viewModel.addToCart(product,this.requireContext())
+            Snackbar.make(this.requireView(),"Item Added to Cart",Snackbar.LENGTH_SHORT).show()
             view.findNavController().navigate(R.id.homeFragment)
 //            val action = ItemShowFragmentDirections.actionItemShowFragmentToCartFragment()
 //            view.findNavController().navigate(action)

@@ -16,13 +16,13 @@ class HomeActivityViewModel : ViewModel() {
             withContext(Dispatchers.IO) {
                 while(isActive) {
                     try {
-                        val url = URL("https://interns1.adm.ug")
+                        val url = URL("https://ec.adm.ug")
                         val connection  = url.openConnection()
                         connection.connect()
                         if(isConnected.value == false)
                             isConnected.postValue(true)
                     } catch (e: Exception) {
-                        Log.e("Comet","FAILED TO CONNECT TO SERVER",e)
+                        Log.e("HomeActivity","FAILED TO CONNECT TO SERVER",e)
                         if(isConnected.value == true)
                             isConnected.postValue(false)
                     }
