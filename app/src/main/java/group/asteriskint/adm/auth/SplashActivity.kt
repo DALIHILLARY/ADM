@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import group.asteriskint.adm.R
 import group.asteriskint.adm.auth.repository.FirebaseViewModel
 import group.asteriskint.adm.ui.MainActivity
+import group.asteriskint.adm.ui.activity.HomeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -43,7 +44,8 @@ class SplashActivity : AppCompatActivity() {
                         firebaseUser.uid,
                         this@SplashActivity
                     )
-                    startActivity(MainActivity())  // If user is logged in, Display Main Activity
+//                    startActivity(MainActivity())  // If user is logged in, Display Main Activity
+                    startActivity(HomeActivity())  // If user is logged in, Display HomeActivity
                 }
             }
         }

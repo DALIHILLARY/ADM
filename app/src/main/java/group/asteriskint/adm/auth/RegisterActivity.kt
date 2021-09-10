@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import group.asteriskint.adm.auth.repository.FirebaseViewModel
 import group.asteriskint.adm.R
+import group.asteriskint.adm.auth.LoginActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.android.ext.android.inject
 
@@ -38,9 +39,9 @@ class RegisterActivity : AppCompatActivity() {
 //            firebaseViewModel.signInWithFacebook(this)
 //        }
 
-        iv_register_google.setOnClickListener {
-            firebaseViewModel.signInWithGoogle(this)
-        }
+//        iv_register_google.setOnClickListener {
+//            firebaseViewModel.signInWithGoogle(this)
+//        }
 
         tv_register_loginnow.setOnClickListener {
             startLoginActivity()
